@@ -7,5 +7,5 @@ import { Reaction, Logger } from "/server/api";
 export default function () {
   Reaction.init();
   // we've finished all reaction core initialization
-  Logger.info("Reaction initialization finished.");
+  Logger.debug("Reaction initialization finished.");
 }

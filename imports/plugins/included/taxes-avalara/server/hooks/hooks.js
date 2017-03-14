@@ -46,7 +46,7 @@ MethodHooks.after("cart/copyCartToOrder", (options) => {
     const order = Orders.findOne({ cartId: cartId });
     taxCalc.recordOrder(order, function (result) {
       if (result) {
-        Logger.info(`Order ${order._id} recorded with Avalara`);
+        Logger.debug(`Order ${order._id} recorded with Avalara`);
       }
     });
   }
@@ -61,7 +61,7 @@ MethodHooks.after("orders/refunds/create", (options) => {
     const refundAmount = options.arguments[2];
     taxCalc.reportRefund(order, refundAmount, function (result) {
       if (result) {
-        Logger.info(`Refund for order ${order._id} recorded with Avalara`);
+        Logger.debug(`Refund for order ${order._id} recorded with Avalara`);
       }
     });
   }

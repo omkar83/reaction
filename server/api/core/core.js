@@ -19,7 +19,7 @@ export default {
     Hooks.Events.run("onCoreInit", this);
     // start job server
     Jobs.startJobServer(() => {
-      Logger.info("JobServer started");
+      Logger.debug("JobServer started");
       ProcessJobs();
       Hooks.Events.run("onJobServerStart");
     });
@@ -273,7 +273,7 @@ export default {
         options.username = Meteor.settings.reaction.REACTION_USER || "Admin";
         options.password = Meteor.settings.reaction.REACTION_AUTH || Random.secret(8);
         options.email = Meteor.settings.reaction.REACTION_EMAIL || Random.id(8).toLowerCase() + "@" + domain;
-        Logger.info("Using meteor --settings to create admin user");
+        Logger.debug("Using meteor --settings to create admin user");
       }
     }
 
@@ -367,7 +367,7 @@ export default {
     if (process.env.REACTION_REGISTRY) {
       // check the environment for the registry fixture data first
       registryFixtureData = process.env.REACTION_REGISTRY;
-      Logger.info("Loaded REACTION_REGISTRY environment variable for registry fixture import");
+      Logger.debug("Loaded REACTION_REGISTRY environment variable for registry fixture import");
     } else {
       // or attempt to load reaction.json fixture data
       try {
@@ -376,7 +376,7 @@ export default {
         Logger.warn("Skipped loading settings from reaction.json.");
         Logger.debug(error, "loadSettings reaction.json not loaded.");
       }
-      Logger.info("Loaded \"/private/settings/reaction.json\" for registry fixture import");
+      Logger.debug("Loaded \"/private/settings/reaction.json\" for registry fixture import");
     }
 
     if (!!registryFixtureData) {
@@ -462,7 +462,7 @@ export default {
   },
   setAppVersion() {
     const version = packageJson.version;
-    Logger.info(`Reaction Version: ${version}`);
+    Logger.debug(`Reaction Version: ${version}`);
     Shops.update({}, { $set: { appVersion: version } }, { multi: true });
   }
 };

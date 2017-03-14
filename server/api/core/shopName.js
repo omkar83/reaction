@@ -16,7 +16,7 @@ export function setShopName(shop) {
     if (!!Shops.findOne({
       name: shopName
     })) {
-      Logger.info(`Default shop name ${shopName} already used`);
+      Logger.debug(`Default shop name ${shopName} already used`);
     } else {
       // update the shop name with the REACTION_SHOP_NAME env var
       try {

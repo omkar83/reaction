@@ -51,7 +51,7 @@ Meteor.methods({
       return Logger.error("Failed to shop/createShop", sanitizedError);
     }
     // we should have created new shop, or errored
-    Logger.info("Created shop: ", shop._id);
+    Logger.debug("Created shop: ", shop._id);
     Roles.addUsersToRoles([currentUser, userId], adminRoles, shop._id);
     return shop._id;
   },

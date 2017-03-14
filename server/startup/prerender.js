@@ -8,6 +8,6 @@ export default function () {
     prerender.set("host", process.env.PRERENDER_HOST);
     prerender.set("protocol", "https");
     WebApp.rawConnectHandlers.use(prerender);
-    Logger.info("Prerender Initialization finished.");
+    Logger.debug("Prerender Initialization finished.");
   }
 }

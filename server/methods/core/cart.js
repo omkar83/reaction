@@ -640,7 +640,7 @@ Meteor.methods({
 
     // insert new reaction order
     const orderId = Collections.Orders.insert(order);
-    Logger.info("Created orderId", orderId);
+    Logger.debug("Created orderId", orderId);
 
     if (orderId) {
       Collections.Cart.remove({
@@ -661,7 +661,7 @@ Meteor.methods({
         Meteor.call("workflow/pushCartWorkflow", "coreCartWorkflow", "coreCheckoutShipping");
       }
 
-      Logger.info("Transitioned cart " + cartId + " to order " + orderId);
+      Logger.debug("Transitioned cart " + cartId + " to order " + orderId);
       // catch send notification, we don't want
       // to block because of notification errors
 
